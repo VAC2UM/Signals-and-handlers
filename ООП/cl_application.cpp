@@ -6,9 +6,7 @@
 #include "cl_6.h"
 #include "queue"
 cl_application::cl_application(cl_base* p_head_object) :cl_base(p_head_object)
-{
-	//реализация конструктора
-}
+{}
 void cl_application::build_tree_objects()
 {
 	int i_class;
@@ -67,7 +65,6 @@ void cl_application::build_tree_objects()
 int cl_application::exec_app()
 {
 	int RON;
-	//для установки состояния объекта
 	cl_base* p_obj = this;
 	cl_base* path_obj;
 	string command, path, delname, text, from_path, to_path;
@@ -80,7 +77,6 @@ int cl_application::exec_app()
 			break;
 		}
 		else if (command == "EMIT") {
-			//выдает сигнал от заданного по координате объекта
 			cin >> path;
 			getline(cin, text);
 			path_obj = find_obj_by_coord(path);
@@ -120,8 +116,7 @@ int cl_application::exec_app()
 			}
 		}
 		else if (command == "SET_CONDITION") {
-			//устанавливает состояние объекта
-				cin >> path;
+			cin >> path;
 			cin >> RON;
 			if (find_obj_by_coord(path) == nullptr) {
 				cout << endl << "Object " << path << " not found";
@@ -141,7 +136,6 @@ void cl_application::handler(string text) {
 	cout << endl << "Signal to " << get_absolute_path() << " Text: " << text;
 }
 TYPE_SIGNAL cl_application::get_method(int id) {
-	//метод получения указателя на метод сигнала класса по номеру
 		switch (id) {
 		case 1:
 			return SIGNAL_D(cl_application::signal); break;
@@ -160,7 +154,6 @@ TYPE_SIGNAL cl_application::get_method(int id) {
 		}
 }
 TYPE_HANDLER cl_application::get_handler(int id) {
-	//метод получения указателя на метод обработчика класса по номеру
 		switch (id) {
 		case 1:
 			return HENDLER_D(cl_application::handler); break;
